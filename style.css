@@ -1,0 +1,147 @@
+/* Default styles */
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(cover\ image.jpg);
+  background-size: cover; /* Add this line */
+}
+
+.container {
+  width: 70vh;
+  top: 50%;
+  left: 30%;
+  position: absolute;
+  padding: 10px;
+  transform: translate(-50%, -50%);
+  background: none;
+  border-radius: 40px;
+  padding-bottom: 50px;
+  text-align: center;
+  color: #fff;
+}
+
+.Btn {
+  background-color: #ff8d0a;
+  border-radius: 4px;
+  border: 0;
+  left: 25%;
+  box-shadow: rgba(1, 60, 136, .5) 0 -1px 3px 0 inset, rgba(0, 44, 97, .1) 0 3px 6px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inherit;
+  font-family: "Space Grotesk", -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0;
+  min-height: 56px;
+  min-width: 120px;
+  padding: 16px 20px;
+  position: absolute;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
+
+.Btn:hover {
+  background-color: #065dd8;
+  transform: translateY(-2px);
+}
+
+.Btn1 {
+  width: 60vh;
+  left: 50%;
+  position: absolute;
+  padding: 10px;
+  margin-top: 25px;
+  transform: translate(-50%, -50%);
+  border-radius: 40px;
+  text-align: center;
+}
+
+#quiz-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#quiz-container h1 {
+  background: linear-gradient(white, orange);
+}
+
+#timer {
+  font-size: 40px;
+  background: white;
+  margin-bottom: 20px;
+}
+
+#questions {
+  background: white;
+  padding: 10px;
+  text-align: left;
+  font-size: 20px;
+}
+
+.page3 {
+  width: 70%;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  padding: 10px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(white, #df9d3a);
+  padding-bottom: 50px;
+  text-align: center;
+  box-shadow: 10px 10px;
+}
+
+/* Media Queries for Responsive Design */
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .Btn {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .Btn1 {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .page3 {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .container {
+    width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .Btn,
+  .Btn1 {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .page3 {
+    width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

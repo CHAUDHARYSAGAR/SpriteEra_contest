@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Result Page</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page3">
+  <script>
+    // Get time taken from URL parameter
+    var urlParams = new URLSearchParams(window.location.search);
+    var answers = {};
+    var timeTaken = urlParams.get('time');
+  
+    // Display time taken
+    if (timeTaken !== null) {
+      var minutes = Math.floor(timeTaken / 60);
+      var seconds = timeTaken % 60;
+      document.write('<h2>Congratulations! You have successfully completed the contest</h2>.<br>');
+      document.write('<h3>Time taken : </h3>' + minutes + ' minutes ' + seconds + ' seconds');
+    } else {
+      document.write('Oops! Something went wrong.');
+    }
+
+    // Retrieve selected answers from URL parameters
+  urlParams.forEach(function(value, key) {
+    if (!key.startsWith('content_') && key !== 'time') {
+      answers[key] = value;
+    }
+  });
+
+
+  // Display selected answers
+  document.write('<h2>Selected Answers :</h2>');
+  document.write('<ul>');
+  for (var question in answers) {
+    document.write('<li>' + decodeURIComponent(question) + ' : ' + decodeURIComponent(answers[question]) + '</li>');
+  }
+  document.write('</ul>');
+
+  </script>
+  
+
+</div>
+
+</body>
+</html>

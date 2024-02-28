@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Page</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="quiz-container">
+  <h1>Quiz</h1>
+  <div id="timer">Time Left: <span id="time">5:00</span></div>
+  <form id="quiz-form">
+    <div id="questions">
+      <p>1. What is the capital of France?</p>
+      <input type="radio" name="question1" value="a"> a) Paris<br>
+      <input type="radio" name="question1" value="b"> b) Rome<br>
+      <input type="radio" name="question1" value="c"> c) Berlin<br>
+      <input type="radio" name="question1" value="d"> d) Madrid<br><br>
+      
+      <p>2. What is the largest planet in our solar system?</p>
+      <input type="radio" name="question2" value="a"> a) Earth<br>
+      <input type="radio" name="question2" value="b"> b) Jupiter<br>
+      <input type="radio" name="question2" value="c"> c) Saturn<br>
+      <input type="radio" name="question2" value="d"> d) Mars<br><br>
+
+      <p>3. Which of the three banks will be merged with the other two to create India’s third-largest bank?</p>
+      <input type="radio" name="question3" value="a"> a) Punjab National Bank<br>
+      <input type="radio" name="question3" value="b"> b) Indian Bank<br>
+      <input type="radio" name="question3" value="c"> c) Bank of Baroda<br>
+      <input type="radio" name="question3" value="d"> d) Dena Bank<br><br>
+
+      <p>4. What is the name of the weak zone of the earth’s crust?</p>
+      <input type="radio" name="question4" value="a"> a) Seismic<br>
+      <input type="radio" name="question4" value="b"> b) Cosmic<br>
+      <input type="radio" name="question4" value="c"> c) Formic<br>
+      <input type="radio" name="question4" value="d"> d) Anaemic<br><br>
+
+      <p>5. Where was India’s first national Museum opened?</p>
+      <input type="radio" name="question5" value="a"> a) Delhi<br>
+      <input type="radio" name="question5" value="b"> b) Hyderabad<br>
+      <input type="radio" name="question5" value="c"> c) Rajasthan<br>
+      <input type="radio" name="question5" value="d"> d) Mumbai<br><br>
+
+      <!-- Add more questions here -->
+
+    </div>
+  </form>
+</div>
+<div class="Btn1">
+  <button class="Btn" id="submitBtn">Submit</button>
+</div>
+
+<script>
+// Set timer for 5 minutes
+  var timer = 300;
+  var timerDisplay = document.getElementById('timer');
+  var startTime = Date.now();
+  var answers = {};
+
+  var countdown = setInterval(function() {
+    var minutes = Math.floor(timer / 60);
+    var seconds = timer % 60;
+
+    timerDisplay.textContent = 'Time Left: ' + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+
+    if (timer === 0) {
+      clearInterval(countdown);
+      // Redirect to Page 3 when timer runs out
+      window.location.href = 'page_3.html?time=null';
+    }
+
+    timer--;
+
+  }, 1000);
+
+  // Submit button functionality
+  document.getElementById('submitBtn').addEventListener('click', function() {
+    clearInterval(countdown);
+    var endTime = Date.now();
+    var timeTaken = Math.floor((endTime - startTime) / 1000); // Calculate time taken in seconds
+    // Get selected answers
+    var selectedAnswers = document.querySelectorAll('input[type=radio]:checked');
+    selectedAnswers.forEach(function(answer) {
+      answers[answer.name] = {
+        choice: answer.value,
+        content: answer.parentElement.innerText.trim() // Capture the content of the selected answer
+      };
+    });
+
+    // Redirect to Page 3 with time taken and selected answers
+    var queryString = '?time=' + timeTaken;
+    for (var question in answers) {
+      queryString += '&' + encodeURIComponent(question) + '=' + encodeURIComponent(answers[question].choice) + '&content_' + encodeURIComponent(question) + '=' + encodeURIComponent(answers[question].content);
+    }
+    window.location.href = 'page_3.html' + queryString;
+  });
+</script>
+
+</body>
+</html>
